@@ -1,0 +1,23 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="gfonts"
+run/main_scene="res://addons/google_fonts/Menu.tscn"
+config/icon="res://example/icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot-plugin-refresher/plugin.cfg", "res://addons/google_fonts/plugin.cfg" )
+
+[physics]
+
+common/enable_pause_aware_picking=true

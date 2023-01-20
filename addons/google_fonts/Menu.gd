@@ -61,6 +61,7 @@ func update_font_file():
 func populate_branch(tree, root, pointer:Dictionary):
 	for p in pointer.keys():
 		var branch = tree.create_item(root)
+		branch.collapsed = true
 		branch.set_text(0, p)
 		if typeof(pointer[p]) == TYPE_DICTIONARY:
 			populate_branch(tree, branch, pointer[p])

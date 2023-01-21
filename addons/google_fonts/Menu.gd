@@ -136,3 +136,29 @@ func _on_save_pressed():
 
 func _on_Button_pressed():
 	_ready()
+
+func filter_tree(item: TreeItem, text):
+	var child = item.get_children()
+	while child != null:
+		if child.get_children():
+			if not text in child.get_text(0):
+				filter_tree(child, text)
+				child.collapsed = false
+			if not child.get_children() and not text in child.get_text(0):
+				var next_child = child.get_next()
+				child.free()
+				child = next_child
+			else:
+				child = child.get_next()
+		elif text in child.get_text(0):
+			child = child.get_next()
+		else:
+			var next_child = child.get_next()
+			child.free()
+			child = next_child
+
+func _on_LineEdit_text_changed(new_text):
+	populate_tree()
+	if new_text == "":
+		return
+	filter_tree(tree.get_root(), new_text)

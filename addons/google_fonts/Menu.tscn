@@ -8,9 +8,6 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="split" type="HSplitContainer" parent="."]
 margin_left = 7.0
@@ -27,7 +24,14 @@ margin_bottom = 586.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.36
 
+[node name="LineEdit" type="LineEdit" parent="split/box"]
+margin_right = 261.0
+margin_bottom = 26.0
+clear_button_enabled = true
+placeholder_text = "Search fonts"
+
 [node name="Tree" type="Tree" parent="split/box"]
+margin_top = 30.0
 margin_right = 261.0
 margin_bottom = 562.0
 size_flags_horizontal = 3
@@ -86,6 +90,7 @@ __meta__ = {
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 use_threads = true
 
+[connection signal="text_changed" from="split/box/LineEdit" to="." method="_on_LineEdit_text_changed"]
 [connection signal="cell_selected" from="split/box/Tree" to="." method="_on_Tree_cell_selected"]
 [connection signal="pressed" from="split/box/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="split/PanelContainer/VBoxContainer/save" to="." method="_on_save_pressed"]
